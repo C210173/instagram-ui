@@ -3,24 +3,20 @@ import { AiFillHeart } from "react-icons/ai";
 import { FaComment } from "react-icons/fa";
 import "./ReqUserPostCard.css";
 
-const ReqUserPostCard = () => {
+const ReqUserPostCard = ({ post }) => {
   return (
     <div className="p-2">
       <div className="post w-60 h-60">
-        <img
-          className="cursor-pointer"
-          src="https://bizweb.dktcdn.net/100/438/408/files/anh-dep-3d-yodyvn.jpg?v=1683534873601"
-          alt=""
-        />
+        <img className="cursor-pointer object-cover" src={post.image} alt="" />
         <div className="overlay">
           <div className="overlay-text flex justify-between">
             <div>
               <AiFillHeart />
-              <span>10</span>
+              <span>{post.likedByUsers?.length}</span>
             </div>
             <div>
               <FaComment />
-              <span>30</span>
+              <span>{post.comments?.length}</span>
             </div>
           </div>
         </div>

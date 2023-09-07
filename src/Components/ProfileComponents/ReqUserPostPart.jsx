@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { reqUserPostAction } from "../../Redux/Post/Action";
 
 const ReqUserPostPart = ({ user }) => {
-  const [activeTab, setActiveTab] = useState();
+  const [activeTab, setActiveTab] = useState("Post");
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
   const { post } = useSelector((store) => store);
@@ -40,8 +40,8 @@ const ReqUserPostPart = ({ user }) => {
         ))}
       </div>
       <div className="flex flex-wrap">
-        {activeTab === "Post" && !post.profilePost?.message
-          ? post?.profilePost?.map((item) => <ReqUserPostCard post={item} />)
+        {activeTab === "Post"
+          ? post?.usersPost?.map((item) => <ReqUserPostCard post={item} />)
           : user?.savedPost.map((item) => <ReqUserPostCard post={item} />)}
       </div>
     </div>

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 export const ProfileUserDetails = () => {
-  const { user } = useSelector((store) => store);
+  const { user, post } = useSelector((store) => store);
   const navigate = useNavigate();
 
   return (
@@ -30,7 +30,9 @@ export const ProfileUserDetails = () => {
           </div>
           <div className="flex space-x-10">
             <div>
-              <span className="font-semibold mr-2">10</span>
+              <span className="font-semibold mr-2">
+                {post.usersPost?.length}
+              </span>
               <span>posts</span>
             </div>
             <div>
