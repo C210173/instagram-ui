@@ -72,7 +72,7 @@ const PostCard = ({ post }) => {
         <div className="flex justify-between items-center w-full py-4 px-5">
           <div className="flex items-center">
             <img
-              className="h-12 w-12 rounded-full"
+              className="h-12 w-12 rounded-full object-cover"
               src={
                 post.user.userImage ||
                 "https://www.kindpng.com/picc/m/22-223863_no-avatar-png-circle-transparent-png.png"

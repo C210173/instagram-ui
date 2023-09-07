@@ -33,7 +33,7 @@ const CommentCard = ({ comment }) => {
         <div className="flex items-center">
           <div>
             <img
-              className="w-9 h-9 rounded-full"
+              className="w-9 h-9 rounded-full object-cover"
               src={
                 comment.user.userImage ||
                 "https://www.kindpng.com/picc/m/22-223863_no-avatar-png-circle-transparent-png.png"

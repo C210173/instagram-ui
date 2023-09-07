@@ -12,7 +12,7 @@ export const ProfileUserDetails = () => {
       <div className="flex items-center">
         <div className="w-[15%] mr-10">
           <img
-            className="w-32 h-32 rounded-full "
+            className="w-32 h-32 rounded-full object-cover"
             src={
               user.reqUser?.image ||
               "https://www.kindpng.com/picc/m/22-223863_no-avatar-png-circle-transparent-png.png"

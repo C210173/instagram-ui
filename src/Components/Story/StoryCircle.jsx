@@ -12,7 +12,7 @@ const StoryCircle = ({ user }) => {
       className="cursor-pointer flex flex-col items-center"
     >
       <img
-        className="w-16 h-16 rounded-full"
+        className="w-16 h-16 rounded-full object-cover"
         src={
           user.image ||
           "https://www.kindpng.com/picc/m/22-223863_no-avatar-png-circle-transparent-png.png"

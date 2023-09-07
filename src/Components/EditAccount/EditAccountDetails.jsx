@@ -81,7 +81,7 @@ const EditAccountDetails = () => {
       <div className="flex pb-7">
         <div className="w-[15%]">
           <img
-            className="w-8 h-8 rounded-full"
+            className="w-8 h-8 rounded-full object-cover"
             src={
               imageFile ||
               user.reqUser?.image ||

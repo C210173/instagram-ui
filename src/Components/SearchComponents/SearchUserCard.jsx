@@ -10,7 +10,7 @@ const SearchUserCard = ({ user }) => {
     >
       <div className="flex items-center ">
         <img
-          className="w-10 h-10 rounded-full"
+          className="w-10 h-10 rounded-full object-cover"
           src={
             user.image ||
             "https://www.kindpng.com/picc/m/22-223863_no-avatar-png-circle-transparent-png.png"

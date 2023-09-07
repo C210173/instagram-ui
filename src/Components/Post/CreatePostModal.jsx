@@ -10,7 +10,7 @@ import { FaPhotoVideo } from "react-icons/fa";
 import { GrEmoji } from "react-icons/gr";
 import { GoLocation } from "react-icons/go";
 import "./CreatePostModal.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createPostAction } from "../../Redux/Post/Action";
 import { uploadToCloudinary } from "../../Config/UploadToCloudinary";
 
@@ -22,6 +22,7 @@ const CreatePostModal = ({ onClose, isOpen }) => {
   const [imageUrl, setImageUrl] = useState("");
   const [location, setLocation] = useState("");
   const token = localStorage.getItem("token");
+  const { user } = useSelector((store) => store);
 
   const handleDrop = (event) => {
     event.preventDefault();
@@ -131,11 +132,14 @@ const CreatePostModal = ({ onClose, isOpen }) => {
               <div className="w-[50%]">
                 <div className="flex items-center px-2">
                   <img
-                    className="w-7 h-7 rounded-full"
-                    src="https://img.meta.com.vn/Data/image/2022/01/13/anh-dep-thien-nhien-6.jpg"
+                    className="w-7 h-7 rounded-full object-cover"
+                    src={
+                      user.reqUser?.image ||
+                      "https://www.kindpng.com/picc/m/22-223863_no-avatar-png-circle-transparent-png.png"
+                    }
                     alt=""
                   />
-                  <p className="font-semibold ml-4">username</p>
+                  <p className="font-semibold ml-4">{user.reqUser?.username}</p>
                 </div>
                 <div className="px-2">
                   <textarea

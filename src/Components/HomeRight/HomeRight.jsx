@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { clearUserData } from "../../Redux/User/Action";
 
 const HomeRight = () => {
-  const { user, post } = useSelector((store) => store);
+  const { user } = useSelector((store) => store);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,13 +21,13 @@ const HomeRight = () => {
   };
 
   return (
-    <div className="">
+    <div className="sticky top-10 h-[100vh]">
       <div>
         <div className="flex justify-between items-center">
           <div className="flex items-center ">
             <div>
               <img
-                className="w-12 h-12 rounded-full"
+                className="w-12 h-12 rounded-full object-cover"
                 src={
                   user.reqUser?.image ||
                   "https://www.kindpng.com/picc/m/22-223863_no-avatar-png-circle-transparent-png.png"
