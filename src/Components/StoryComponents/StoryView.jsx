@@ -16,7 +16,7 @@ const StoryImage = styled.img`
 
 const StoryView = ({ stories }) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
-  const [activeIndex, setActiveIndex] = useState();
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const handleNextStory = () => {
     if (currentStoryIndex < stories?.length - 1) {
@@ -38,14 +38,15 @@ const StoryView = ({ stories }) => {
       <StoryViewerContainer>
         <StoryImage src={stories?.[currentStoryIndex].image} />
         <div className="absolute top-0 flex w-full">
-          {stories.map((item, index) => (
-            <Progressbar
-              key={index}
-              duration={2000}
-              index={index}
-              activeIndex={activeIndex}
-            />
-          ))}
+          {stories &&
+            stories.map((item, index) => (
+              <Progressbar
+                key={index}
+                duration={2000}
+                index={index}
+                activeIndex={activeIndex}
+              />
+            ))}
         </div>
       </StoryViewerContainer>
     </div>

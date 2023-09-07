@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { findStoryByUserId } from "../../Redux/Story/Action";
 
 const Story = () => {
-  const userId = useParams();
+  const { userId } = useParams();
   const token = localStorage.getItem("token");
   const dispatch = useDispatch();
   const { story } = useSelector((store) => store);
@@ -13,7 +13,7 @@ const Story = () => {
   console.log("story -----", story);
 
   useEffect(() => {
-    const data = { token, userId };
+    const data = { jwt: token, userId };
     dispatch(findStoryByUserId(data));
   }, [userId]);
   return (
