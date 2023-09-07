@@ -1,4 +1,5 @@
 import {
+  CLEAR_USER_DATA,
   FOLLOW_USER,
   GET_USER_BY_USERNAME,
   GET_USER_BY_USER_IDS,
@@ -9,7 +10,7 @@ import {
   UPDATE_USER,
 } from "./ActionType";
 
-const initialValue = {
+const initialState = {
   reqUser: null,
   findByUsername: null,
   findUserByIds: [],
@@ -19,23 +20,38 @@ const initialValue = {
   updateUser: null,
   popularUsers: null,
 };
-export const UserReducer = (store = initialValue, { type, payload }) => {
-  if (type === REQ_USER) {
-    return { ...store, reqUser: payload };
-  } else if (type === GET_USER_BY_USERNAME) {
-    return { ...store, findByUsername: payload };
-  } else if (type === GET_USER_BY_USER_IDS) {
-    return { ...store, findUserByIds: payload };
-  } else if (type === FOLLOW_USER) {
-    return { ...store, followUser: payload };
-  } else if (type === UNFOLLOW_USER) {
-    return { ...store, unfollowUser: payload };
-  } else if (type === SEARCH_USER) {
-    return { ...store, searchUser: payload };
-  } else if (type === UPDATE_USER) {
-    return { ...store, updateUser: payload };
-  } else if (type === POPULAR_USER) {
-    return { ...store, popularUsers: payload };
+
+export const UserReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case REQ_USER:
+      return { ...state, reqUser: action.payload };
+    case GET_USER_BY_USERNAME:
+      return { ...state, findByUsername: action.payload };
+    case GET_USER_BY_USER_IDS:
+      return { ...state, findUserByIds: action.payload };
+    case FOLLOW_USER:
+      return { ...state, followUser: action.payload };
+    case UNFOLLOW_USER:
+      return { ...state, unfollowUser: action.payload };
+    case SEARCH_USER:
+      return { ...state, searchUser: action.payload };
+    case UPDATE_USER:
+      return { ...state, updateUser: action.payload };
+    case POPULAR_USER:
+      return { ...state, popularUsers: action.payload };
+    case CLEAR_USER_DATA:
+      return {
+        ...state,
+        reqUser: null,
+        findByUsername: null,
+        findUserByIds: [],
+        followUser: null,
+        unfollowUser: null,
+        searchUser: null,
+        updateUser: null,
+        popularUsers: null,
+      };
+    default:
+      return state;
   }
-  return store;
 };

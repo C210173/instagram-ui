@@ -1,4 +1,5 @@
 import {
+  CLEAR_USER_DATA,
   FOLLOW_USER,
   GET_USER_BY_USERNAME,
   GET_USER_BY_USER_IDS,
@@ -145,4 +146,8 @@ export const getPopularUserAction = (jwt) => async (dispatch) => {
   } catch (error) {
     console.log("error", error);
   }
+};
+
+export const clearUserData = () => {
+  return { type: CLEAR_USER_DATA };
 };

@@ -1,16 +1,20 @@
 import React from "react";
 import SuggetionCard from "./SuggetionCard";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { clearUserData } from "../../Redux/User/Action";
 
 const HomeRight = () => {
   const { user, post } = useSelector((store) => store);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // Hàm xử lý khi bấm vào chữ "swith"
   const handleSwitchClick = () => {
     // Xóa token khỏi localStorage (sử dụng removeItem)
     localStorage.removeItem("token");
+
+    dispatch(clearUserData());
 
     // Chuyển đến trang /login
     navigate("/login");
@@ -36,7 +40,7 @@ const HomeRight = () => {
               <p className="opacity-70">{user.reqUser?.username}</p>
             </div>
           </div>
-          <div className="border cursor-pointer">
+          <div className="cursor-pointer">
             <p
               className="text-blue-700 font-semibold"
               onClick={handleSwitchClick}
