@@ -13,14 +13,16 @@ const initialValue = {
 };
 
 export const CommentReducer = (store = initialValue, { type, payload }) => {
-  if (type === CREATE_COMMENT) {
-    return { ...store, createdComment: payload };
-  } else if (type === GET_POST_COMMENT) {
-    return { ...store, postComment: payload };
-  } else if (type === LIKE_COMMENT) {
-    return { ...store, likeComment: payload };
-  } else if (type === UNLIKE_COMMENT) {
-    return { ...store, unlikeComment: payload };
+  switch (type) {
+    case CREATE_COMMENT:
+      return { ...store, createdComment: payload };
+    case GET_POST_COMMENT:
+      return { ...store, postComment: payload };
+    case LIKE_COMMENT:
+      return { ...store, likeComment: payload };
+    case UNLIKE_COMMENT:
+      return { ...store, unlikeComment: payload };
+    default:
+      return store;
   }
-  return store;
 };

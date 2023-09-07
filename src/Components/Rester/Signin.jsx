@@ -41,7 +41,7 @@ const Signin = () => {
 
   useEffect(() => {
     if (user.reqUser?.username) {
-      navigate(`/${user.reqUser?.username}`);
+      navigate("/");
     }
   }, [jwt, user.reqUser]);
 
