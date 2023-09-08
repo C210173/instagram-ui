@@ -98,7 +98,7 @@ export const unFollowUserAction = (data) => async (dispatch) => {
 
 export const searchUserAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/users/search?q=${data.query}`, {
+    const res = await fetch(`${BASE_API}/users/search/?query=${data.query}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
