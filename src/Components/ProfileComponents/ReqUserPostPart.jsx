@@ -40,9 +40,11 @@ const ReqUserPostPart = ({ user }) => {
         ))}
       </div>
       <div className="flex flex-wrap">
-        {activeTab === "Post"
-          ? post?.usersPost?.map((item) => <ReqUserPostCard post={item} />)
-          : user?.savedPost.map((item) => <ReqUserPostCard post={item} />)}
+        {activeTab === "Post" && Array.isArray(post?.usersPost) ? (
+          post?.usersPost.map((item) => <ReqUserPostCard post={item} />)
+        ) : (
+          <p></p> // Hiển thị thông báo nếu không có bài post
+        )}
       </div>
     </div>
   );
