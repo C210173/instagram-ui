@@ -13,7 +13,7 @@ export const uploadToCloudinary = async (image) => {
       }
     );
     const fileData = await res.json();
-    console.log("fileData: " + fileData);
+    console.log("fileData: " + fileData.url.toString());
     return fileData.url.toString();
   }
 };

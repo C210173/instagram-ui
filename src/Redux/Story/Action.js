@@ -1,9 +1,8 @@
+import { BASE_API } from "../../Config/Api";
 import { FETCH_FOLLOWING_USER_STORY, FETCH_USER_STORY } from "./ActionType";
 
-const BASE_API = "http://localhost:5454/api";
-
 export const findFollowingUserStory = (data) => async (dispatch) => {
-  const res = await fetch(`${BASE_API}/stories/f/${data.userId}`, {
+  const res = await fetch(`${BASE_API}/api/stories/f/${data.userId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -16,7 +15,7 @@ export const findFollowingUserStory = (data) => async (dispatch) => {
 
 export const findStoryByUserId = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/stories/${data.userId}`, {
+    const res = await fetch(`${BASE_API}/api/stories/${data.userId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

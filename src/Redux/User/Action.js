@@ -1,3 +1,4 @@
+import { BASE_API } from "../../Config/Api";
 import {
   CLEAR_USER_DATA,
   FOLLOW_USER,
@@ -9,11 +10,10 @@ import {
   UNFOLLOW_USER,
   UPDATE_USER,
 } from "./ActionType";
-const BASE_API = "http://localhost:5454/api";
 
 export const getUserProfileAction = (jwt) => async (dispatch) => {
   try {
-    const res = await fetch("http://localhost:5454/api/users/req", {
+    const res = await fetch(`${BASE_API}/api/users/req`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export const getUserProfileAction = (jwt) => async (dispatch) => {
 
 export const findUserByUserNameAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/users/username/${data.username}`, {
+    const res = await fetch(`${BASE_API}/api/users/username/${data.username}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export const findUserByUserNameAction = (data) => async (dispatch) => {
 
 export const findUserByUserIdsAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/users/m/${data.userIds}`, {
+    const res = await fetch(`${BASE_API}/api/users/m/${data.userIds}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -64,7 +64,7 @@ export const findUserByUserIdsAction = (data) => async (dispatch) => {
 
 export const followUserAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/users/follow/${data.userId}`, {
+    const res = await fetch(`${BASE_API}/api/users/follow/${data.userId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -81,7 +81,7 @@ export const followUserAction = (data) => async (dispatch) => {
 
 export const unFollowUserAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/users/unfollow/${data.userId}`, {
+    const res = await fetch(`${BASE_API}/api/users/unfollow/${data.userId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -98,13 +98,16 @@ export const unFollowUserAction = (data) => async (dispatch) => {
 
 export const searchUserAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/users/search/?query=${data.query}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + data.jwt,
-      },
-    });
+    const res = await fetch(
+      `${BASE_API}/api/users/search/?query=${data.query}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + data.jwt,
+        },
+      }
+    );
     const user = await res.json();
     console.log("search user", user);
     dispatch({ type: SEARCH_USER, payload: user });
@@ -115,7 +118,7 @@ export const searchUserAction = (data) => async (dispatch) => {
 
 export const editUserAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/users/account/edit`, {
+    const res = await fetch(`${BASE_API}/api/users/account/edit`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -133,7 +136,7 @@ export const editUserAction = (data) => async (dispatch) => {
 
 export const getPopularUserAction = (jwt) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/users/popular`, {
+    const res = await fetch(`${BASE_API}/api/users/popular`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

@@ -1,8 +1,9 @@
+import { BASE_API } from "../../Config/Api";
 import { SIGN_IN, SIGN_UP } from "./ActionType";
 
 export const signinAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch("http://localhost:5454/signin", {
+    const res = await fetch(`${BASE_API}/signin`, {
       method: "GET",
       headers: {
         "Content-Type": "Application/json",
@@ -20,7 +21,7 @@ export const signinAction = (data) => async (dispatch) => {
 
 export const signupAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch("http://localhost:5454/signup", {
+    const res = await fetch(`${BASE_API}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "Application/json",

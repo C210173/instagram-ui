@@ -1,3 +1,4 @@
+import { BASE_API } from "../../Config/Api";
 import {
   CREATE_COMMENT,
   GET_POST_COMMENT,
@@ -5,11 +6,9 @@ import {
   UNLIKE_COMMENT,
 } from "./ActionType";
 
-const BASE_API = "http://localhost:5454/api";
-
 export const createCommentAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/comments/create/${data.postId}`, {
+    const res = await fetch(`${BASE_API}/api/comments/create/${data.postId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +26,7 @@ export const createCommentAction = (data) => async (dispatch) => {
 
 export const findPostCommentAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/comments/${data.postId}`, {
+    const res = await fetch(`${BASE_API}/api/comments/${data.postId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +43,7 @@ export const findPostCommentAction = (data) => async (dispatch) => {
 
 export const likeCommentAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/comments/like/${data.commentId}`, {
+    const res = await fetch(`${BASE_API}/api/comments/like/${data.commentId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -61,13 +60,16 @@ export const likeCommentAction = (data) => async (dispatch) => {
 
 export const unLikeCommentAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/comments/unlike/${data.commentId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + data.jwt,
-      },
-    });
+    const res = await fetch(
+      `${BASE_API}/api/comments/unlike/${data.commentId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + data.jwt,
+        },
+      }
+    );
     const comment = await res.json();
     console.log("unlike comment " + comment);
     dispatch({ type: UNLIKE_COMMENT, payload: comment });

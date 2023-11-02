@@ -1,3 +1,4 @@
+import { BASE_API } from "../../Config/Api";
 import {
   CREATE_NEW_POST,
   DELETE_POST,
@@ -9,11 +10,9 @@ import {
   UNSAVE_POST,
 } from "./ActionType";
 
-const BASE_API = "http://localhost:5454/api";
-
 export const createPostAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/posts/create`, {
+    const res = await fetch(`${BASE_API}/api/posts/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,7 +30,7 @@ export const createPostAction = (data) => async (dispatch) => {
 
 export const findUserPostAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/posts/following/${data.userIds}`, {
+    const res = await fetch(`${BASE_API}/api/posts/following/${data.userIds}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +48,7 @@ export const findUserPostAction = (data) => async (dispatch) => {
 
 export const reqUserPostAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/posts/all/${data.userId}`, {
+    const res = await fetch(`${BASE_API}/api/posts/all/${data.userId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +66,7 @@ export const reqUserPostAction = (data) => async (dispatch) => {
 
 export const likePostAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/posts/like/${data.postId}`, {
+    const res = await fetch(`${BASE_API}/api/posts/like/${data.postId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -85,7 +84,7 @@ export const likePostAction = (data) => async (dispatch) => {
 
 export const unLikePostAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/posts/unlike/${data.postId}`, {
+    const res = await fetch(`${BASE_API}/api/posts/unlike/${data.postId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -103,7 +102,7 @@ export const unLikePostAction = (data) => async (dispatch) => {
 
 export const savePostAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/posts/save_post/${data.postId}`, {
+    const res = await fetch(`${BASE_API}/api/posts/save_post/${data.postId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -121,13 +120,16 @@ export const savePostAction = (data) => async (dispatch) => {
 
 export const unSavePostAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/posts/unsave_post/${data.postId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + data.jwt,
-      },
-    });
+    const res = await fetch(
+      `${BASE_API}/api/posts/unsave_post/${data.postId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + data.jwt,
+        },
+      }
+    );
     const post = await res.json();
 
     console.log("un saved post: ", post);
@@ -139,7 +141,7 @@ export const unSavePostAction = (data) => async (dispatch) => {
 
 export const findPostByIdAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/posts/${data.postId}`, {
+    const res = await fetch(`${BASE_API}/api/posts/${data.postId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -157,7 +159,7 @@ export const findPostByIdAction = (data) => async (dispatch) => {
 
 export const deletePostAction = (data) => async (dispatch) => {
   try {
-    const res = await fetch(`${BASE_API}/posts/delete/${data.postId}`, {
+    const res = await fetch(`${BASE_API}/api/posts/delete/${data.postId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
