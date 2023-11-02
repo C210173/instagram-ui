@@ -1,2 +1,1 @@
-export const BASE_API =
-  "http://instagram-env.eba-grujjy6u.us-east-1.elasticbeanstalk.com";
+export const BASE_API = "https://d37mjxg1vbyn6v.cloudfront.net";
